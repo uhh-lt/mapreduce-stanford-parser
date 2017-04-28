@@ -28,5 +28,19 @@ public class HadoopTest {
     public void testDefaultConfiguration() throws Exception {
         run(new Configuration(), 14);
     }
+
+    @Test
+    public void testConllFormat() throws Exception {
+        Configuration conf = new Configuration();
+        conf.setStrings("outputFormat", "conll");
+        run(conf, 1238);
+    }
+
+    @Test
+    public void testListFormat() throws Exception {
+        Configuration conf = new Configuration();
+        conf.setStrings("outputFormat", "list");
+        run(conf, 14);
+    }
 }
 
