@@ -9,6 +9,7 @@ fi
 source $3
 input=$1
 output=$2
+outputFormat="conll"
 
 echo "Corpus: $input"
 if  $hadoop fs -test -e $input  ; then
@@ -32,6 +33,7 @@ HADOOP_CLASSPATH=$path $hadoop \
     -Dmapreduce.job.queuename=$queue\
     -Dmapreduce.map.java.opts=-Xmx${hadoop_xmx_mb}m \
     -Dmapreduce.map.memory.mb=$hadoop_mb \
+    -DoutputFormat=${outputFormat} \
     $input \
     $output \
     true
