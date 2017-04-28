@@ -1,4 +1,4 @@
-# CoNLL Stanford NN
+# MapReduce Stanford Dependency Parsing Job
 
-This project contains Hadoop jobs for generation of CoNLL parse based on the Stanford NN dependency parser
+This project contains a Hadoop job for generation of dependency parse based on the Stanford NN parser available at the CoreNLP library. 
 

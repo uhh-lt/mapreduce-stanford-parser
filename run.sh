@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ] || [ -z "$3" ] ; then
-    echo "Parse the corpus in the CoNLL format."
+    echo "Parse the corpus and save the dependency parses."
     echo "parameters: <corpus-directory> <output-directory> <cdh.config.sh>"
     exit
 fi
@@ -33,4 +33,5 @@ HADOOP_CLASSPATH=$path $hadoop \
     -Dmapreduce.map.java.opts=-Xmx${hadoop_xmx_mb}m \
     -Dmapreduce.map.memory.mb=$hadoop_mb \
     $input \
-    $output
+    $output \
+    true
