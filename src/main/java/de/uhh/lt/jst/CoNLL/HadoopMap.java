@@ -28,7 +28,7 @@ public class HadoopMap extends Mapper<LongWritable, Text, Text, NullWritable> {
         Properties props = new Properties();
         props.put("language", "english");
         props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, depparse");
-        props.put("depparse.model", "edu/stanford/nlp/models/parser/nndep/english_UD.gz");
+        props.put("depparse.model", "edu/stanford/nlp/models/parser/nndep/english_SD.gz");
         props.put("parse.originalDependencies", true);
         pipeline = new StanfordCoreNLP(props);
     }

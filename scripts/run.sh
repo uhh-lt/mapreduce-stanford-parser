@@ -33,7 +33,8 @@ HADOOP_CLASSPATH=$path $hadoop \
     -Dmapreduce.job.queuename=$queue\
     -Dmapreduce.map.java.opts=-Xmx${hadoop_xmx_mb}m \
     -Dmapreduce.map.memory.mb=$hadoop_mb \
-    -DoutputFormat=${outputFormat} \
+    -Dmapreduce.input.fileinputformat.split.maxsize=1000000 \
+    -DoutputFormat="${outputFormat}" \
     $input \
     $output \
     true
