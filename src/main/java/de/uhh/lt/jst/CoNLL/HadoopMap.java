@@ -40,6 +40,7 @@ public class HadoopMap extends Mapper<LongWritable, Text, Text, NullWritable> {
             pipeline.annotate(document);
             List<CoreMap> coreMapSentences = document.get(SentencesAnnotation.class);
             for (CoreMap sentence: coreMapSentences){
+                context.getCounter("de.uhh.lt.jst", "NUM_SENTENCES").increment(1);
                 SemanticGraph semanticGraph = sentence.get(BasicDependenciesAnnotation.class);
 
                 String sentenceStr = sentence.toString().replace("\t", " ");
@@ -77,6 +78,7 @@ public class HadoopMap extends Mapper<LongWritable, Text, Text, NullWritable> {
 
                     for (Integer id : conllLines.keySet()) {
                         String res = String.format("%d\t%s", id, conllLines.get(id));
+                        context.getCounter("de.uhh.lt.jst", "NUM_DEPS").increment(1);
                         context.write(new Text(res), NullWritable.get());
                     }
 
